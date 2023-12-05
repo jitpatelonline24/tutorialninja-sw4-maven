@@ -1,10 +1,18 @@
+<<<<<<< HEAD
 package com.nopcommerce.demo.propertyreader;
+=======
+package com.tutorialninja.demo.propertyreader;
+>>>>>>> 55cc270 (Initial commit)
 
 import java.io.FileInputStream;
 import java.util.Properties;
 
 /**
+<<<<<<< HEAD
  * Created by Jay Vaghani
+=======
+ * Created by Jitesh Patel
+>>>>>>> 55cc270 (Initial commit)
  */
 public class PropertyReader {
 
@@ -45,7 +53,11 @@ public class PropertyReader {
         Properties prop = new Properties();
         FileInputStream inputStream = null;
         try {
+<<<<<<< HEAD
             inputStream = new FileInputStream(System.getProperty("user.dir") + "/src/test/java/resources/propertiesfile/config.properties");
+=======
+            inputStream = new FileInputStream(System.getProperty("user.dir") + "/src/main/java/com/tutorialninja/demo/propertyreader/PropertyReader.java");
+>>>>>>> 55cc270 (Initial commit)
             prop.load(inputStream);
             if (prop.getProperty(propertyName) != null) {
                 return prop.getProperty(propertyName);

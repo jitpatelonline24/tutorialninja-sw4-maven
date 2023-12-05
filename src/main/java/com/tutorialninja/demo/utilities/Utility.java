@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 package com.nopcommerce.demo.utilities;
 
 import com.google.common.base.Function;
 import com.nopcommerce.demo.browserfactory.ManageBrowser;
+=======
+package com.tutorialninja.demo.utilities;
+
+import com.google.common.base.Function;
+import com.tutorialninja.demo.browserfactory.ManageBrowser;
+>>>>>>> 55cc270 (Initial commit)
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
@@ -13,9 +20,12 @@ import java.time.Duration;
 import java.util.Date;
 import java.util.List;
 
+<<<<<<< HEAD
 /**
  * Created by Jay Vaghani
  */
+=======
+>>>>>>> 55cc270 (Initial commit)
 public class Utility extends ManageBrowser {
     /**
      * This method will click on element
@@ -209,4 +219,107 @@ public class Utility extends ManageBrowser {
         }
         return destination;
     }
+<<<<<<< HEAD
+=======
+    public static String getAlphaNumericString(int n) {
+        // chose a Character random from this String
+        String AlphaNumericString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                + "0123456789"
+                + "abcdefghijklmnopqrstuvxyz";
+        // create StringBuffer size of AlphaNumericString
+        StringBuilder sb = new StringBuilder(n);
+        for (int i = 0; i < n; i++) {
+            // generate a random number between
+            // 0 to AlphaNumericString variable length
+            int index = (int) (AlphaNumericString.length() * Math.random());
+            // add Character one by one in end of sb
+            sb.append(AlphaNumericString.charAt(index));
+        }
+        return sb.toString();
+    }
+
+
+    /**
+     * This method will return list of WebElements
+     */
+    public List<WebElement> getListOfElements(By by) {
+        return driver.findElements(by);
+    }
+
+
+    /**
+     * This method will select the option by contains text from List of Elements
+     */
+    public void selectByContainsTextFromListOfElements(By by, String text) {
+        List<WebElement> webElementList = driver.findElements(by);
+        for (WebElement element : webElementList) {
+            if (element.getText().contains(text)) {
+                element.click();
+                break;
+            }
+        }
+    }
+    /**
+     * This method will select element
+     */
+    public void selectMenu(String menu) {
+        driver.findElement(By.linkText(menu)).click();
+    }
+
+    //This method will select by value
+    public void selectByValueFromDropdown(By by, String text) {
+        WebElement dropdown = driver.findElement(by);
+        Select select = new Select(dropdown);
+        select.selectByValue(text);
+    }
+
+    // This method will clear text from field
+    public void clearTextFromField(By by) {
+        driver.findElement(by).sendKeys(Keys.CONTROL + "a");
+        driver.findElement(by).sendKeys(Keys.DELETE);
+    }
+    public void selectMyAccountOptions(String option) {
+        List<WebElement> myAccountList = getListOfElements(By.xpath("//div[@id='top-links']//li[contains(@class,'open')]/ul/li"));
+        try {
+            for (WebElement options : myAccountList) {
+                if (options.getText().equalsIgnoreCase(option)) {
+                    options.click();
+                }
+            }
+        } catch (StaleElementReferenceException e) {
+            myAccountList = getListOfElements(By.xpath("//div[@id='top-links']//li[contains(@class,'open')]/ul/li"));
+        }
+    }
+    //******************************* Mouse Method ***********************************
+    public void dragAndDrop(By drag, By drop) {
+        Actions actions = new Actions(driver);
+        WebElement draggable = driver.findElement(drag);
+        WebElement droppable = driver.findElement(drop);
+        actions.dragAndDrop(draggable, droppable).build().perform();
+    }
+
+    //**************************** Verify Text*******************************************
+
+    /**
+     * This method verify the text with element
+     * @param driver - Driver
+     * @param locator - By Locato - example - x.path
+     * @param expectedText - expected string
+     * @return
+     */
+    public boolean verifyText(WebDriver driver, By locator, String expectedText) {
+        WebElement element = driver.findElement(locator);
+        String actualText = element.getText();
+        return actualText.equals(expectedText);
+    }
+
+
+    /**
+     * This method will find that we switch to right window
+  *************************** Action Methods ***************************************/
+
+    private void assertEquals(String actual, List<Double> originalProductsPrice, String message) {
+    }
+
+>>>>>>> 55cc270 (Initial commit)
 }
